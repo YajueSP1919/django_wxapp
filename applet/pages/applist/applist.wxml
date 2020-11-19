@@ -1,0 +1,14 @@
+<!--pages/applist/applist.wxml-->
+<view class="weui-panel weui-panel_access">
+  <view class="weui-panel__hd">我使用中的应用</view>
+  <view class="weui-media-box weui-media-box_text" wx:for='{{userAppData}}' data-index='{{index}}' bind:longpress="deleteItem">
+    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
+    <view class="weui-media-box__desc">{{item.desc}}</view>
+  </view>
+  <view class="page__bd page__bd_spacing button-sp-area">
+  <picker bindchange="bindAppPickerChange" range="{{allAppData}}" range-key='name'>
+    <button type="weui-btn mini-btn">添加应用</button>
+  </picker>
+  <button class="weui-btn mini-btn" type="primary" bindtap='onSave'>保存</button>
+  </view>
+</view>

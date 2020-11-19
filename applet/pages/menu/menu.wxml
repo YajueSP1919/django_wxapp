@@ -1,0 +1,28 @@
+<!--pages/menu/menu.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="weui-panel__hd">应用列表</view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-grids">
+      <block wx:for="{{grids}}" wx:key="*this">
+        <navigator url="" class="weui-grid" hover-class="weui-grid_active" data-index='{{index}}' bindtap='onNavigatorTap'>
+          <image class="weui-grid__icon" src='{{item.icon}}' />
+          <view class="weui-grid__label">{{item.name}}</view>
+        </navigator>
+        <navigator wx:if="{{grids[grids.length-1] == item}}" bindtap='moreApp' class="weui-grid" hover-class="weui-grid_active">
+          <image class="weui-grid__icon" src="../../resources/icons/add.svg" />
+          <view class="weui-grid__label">More</view>
+        </navigator>
+      </block>
+    </view>
+    <view class="weui-grids" wx:if='{{grids.length==0}}'>
+      <block>
+        <navigator wx:if="{{grids[grids.length-1] == item}}" bindtap='moreApp' class="weui-grid" hover-class="weui-grid_active">
+          <image class="weui-grid__icon" src="../../resources/icons/add.svg" />
+          <view class="weui-grid__label">More</view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>
